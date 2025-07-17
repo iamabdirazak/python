@@ -1,0 +1,244 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "2d161412-e7c3-4d10-8f07-9a1c7c4a705b",
+   "metadata": {},
+   "source": [
+    "# Conditions and Loops"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "a1cda4b6-0c10-4caf-ab3e-4c906be3c07c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "names = ['Alfredo', 'Amin', 'Zakariya', 'Asma', 'Idil']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "3efef503-e420-4dbd-8b11-9efe873047db",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Alfredo\n",
+      "Amin\n",
+      "Zakariya\n",
+      "Asma\n"
+     ]
+    }
+   ],
+   "source": [
+    "for name in names:\n",
+    "    print(name)\n",
+    "    if name == 'Asma':\n",
+    "        break"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "42594782-7dcd-44ee-9392-57bdceea3730",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Asma\n"
+     ]
+    }
+   ],
+   "source": [
+    "if name in names:\n",
+    "    print(name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "6bddb22e-dc4d-46a1-b955-ea4020539382",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "\u001b[0;31mInit signature:\u001b[0m \u001b[0mrange\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m/\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m*\u001b[0m\u001b[0margs\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+       "\u001b[0;31mDocstring:\u001b[0m     \n",
+       "range(stop) -> range object\n",
+       "range(start, stop[, step]) -> range object\n",
+       "\n",
+       "Return an object that produces a sequence of integers from start (inclusive)\n",
+       "to stop (exclusive) by step.  range(i, j) produces i, i+1, i+2, ..., j-1.\n",
+       "start defaults to 0, and stop is omitted!  range(4) produces 0, 1, 2, 3.\n",
+       "These are exactly the valid indices for a list of 4 elements.\n",
+       "When step is given, it specifies the increment (or decrement).\n",
+       "\u001b[0;31mType:\u001b[0m           type\n",
+       "\u001b[0;31mSubclasses:\u001b[0m     "
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "range??"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "7e01854b-2c4a-4d61-85f1-a2dbdd514def",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "3\n",
+      "5\n",
+      "7\n",
+      "9\n",
+      "11\n",
+      "13\n",
+      "15\n",
+      "17\n",
+      "19\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in range(1, 20, 2):\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "076d1fa1-8f61-44c4-9c4b-08d1bd2959b1",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Asma\n"
+     ]
+    }
+   ],
+   "source": [
+    "while True:\n",
+    "    print(name)\n",
+    "    if name == 'Asma':\n",
+    "        break"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "688c88c9-349b-40d8-900c-9d8f6776fbfe",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "is this working\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"is this working\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "cc6ce881-2d76-450b-af0f-d213866c1d7f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "names = {'name':'Abdirazak', 'age':25, 'gender':'Male'}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "21195e78-237f-4cd7-a4e1-dde861b18d5d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "name: Abdirazak\n",
+      "age: 25\n",
+      "gender: Male\n"
+     ]
+    }
+   ],
+   "source": [
+    "for key, value in names.items():\n",
+    "    print(f'{key}: {value}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "8111637b-e4ef-4880-b9e1-56d84aebb67c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "dict_items([('name', 'Abdirazak'), ('age', 25), ('gender', 'Male')])"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "names.items()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "4925e50a-3806-44d8-bbf2-cbaa687b4ad1",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

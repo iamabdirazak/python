@@ -1,0 +1,1733 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5eade93c-104d-40f6-9bcc-593097ad318c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Defaulting to user installation because normal site-packages is not writeable\n",
+      "Collecting pandas\n",
+      "  Downloading pandas-2.3.1-cp39-cp39-macosx_11_0_arm64.whl.metadata (91 kB)\n",
+      "Requirement already satisfied: numpy>=1.22.4 in /Users/abdirazak/Library/Python/3.9/lib/python/site-packages (from pandas) (1.23.5)\n",
+      "Requirement already satisfied: python-dateutil>=2.8.2 in /Users/abdirazak/Library/Python/3.9/lib/python/site-packages (from pandas) (2.9.0.post0)\n",
+      "Collecting pytz>=2020.1 (from pandas)\n",
+      "  Downloading pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)\n",
+      "Collecting tzdata>=2022.7 (from pandas)\n",
+      "  Downloading tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)\n",
+      "Requirement already satisfied: six>=1.5 in /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/site-packages (from python-dateutil>=2.8.2->pandas) (1.15.0)\n",
+      "Downloading pandas-2.3.1-cp39-cp39-macosx_11_0_arm64.whl (10.8 MB)\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m10.8/10.8 MB\u001b[0m \u001b[31m1.7 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0ma \u001b[36m0:00:01\u001b[0m\n",
+      "\u001b[?25hDownloading pytz-2025.2-py2.py3-none-any.whl (509 kB)\n",
+      "Downloading tzdata-2025.2-py2.py3-none-any.whl (347 kB)\n",
+      "Installing collected packages: pytz, tzdata, pandas\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m3/3\u001b[0m [pandas]2m2/3\u001b[0m [pandas]\n",
+      "\u001b[1A\u001b[2KSuccessfully installed pandas-2.3.1 pytz-2025.2 tzdata-2025.2\n"
+     ]
+    }
+   ],
+   "source": [
+    "!pip install pandas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "6d0b7776-77fe-4d4e-95df-0e4e44c3c8cc",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "b63808ee-c420-471f-bfb2-00e454a0964a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = pd.read_csv('salaries.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "18fdde9c-87de-4cae-b6e7-ce5f6bcafa8d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>work_year</th>\n",
+       "      <th>experience_level</th>\n",
+       "      <th>employment_type</th>\n",
+       "      <th>job_title</th>\n",
+       "      <th>salary</th>\n",
+       "      <th>salary_currency</th>\n",
+       "      <th>salary_in_usd</th>\n",
+       "      <th>employee_residence</th>\n",
+       "      <th>remote_ratio</th>\n",
+       "      <th>company_location</th>\n",
+       "      <th>company_size</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>2025</td>\n",
+       "      <td>EN</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Data Quality Analyst</td>\n",
+       "      <td>60000</td>\n",
+       "      <td>GBP</td>\n",
+       "      <td>75949</td>\n",
+       "      <td>GB</td>\n",
+       "      <td>0</td>\n",
+       "      <td>GB</td>\n",
+       "      <td>M</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>2025</td>\n",
+       "      <td>EN</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Data Quality Analyst</td>\n",
+       "      <td>48000</td>\n",
+       "      <td>GBP</td>\n",
+       "      <td>60759</td>\n",
+       "      <td>GB</td>\n",
+       "      <td>0</td>\n",
+       "      <td>GB</td>\n",
+       "      <td>M</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>2025</td>\n",
+       "      <td>SE</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Applied Scientist</td>\n",
+       "      <td>266000</td>\n",
+       "      <td>USD</td>\n",
+       "      <td>266000</td>\n",
+       "      <td>US</td>\n",
+       "      <td>0</td>\n",
+       "      <td>US</td>\n",
+       "      <td>M</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>2025</td>\n",
+       "      <td>SE</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Applied Scientist</td>\n",
+       "      <td>204000</td>\n",
+       "      <td>USD</td>\n",
+       "      <td>204000</td>\n",
+       "      <td>US</td>\n",
+       "      <td>0</td>\n",
+       "      <td>US</td>\n",
+       "      <td>M</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>2025</td>\n",
+       "      <td>SE</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Data Scientist</td>\n",
+       "      <td>291000</td>\n",
+       "      <td>USD</td>\n",
+       "      <td>291000</td>\n",
+       "      <td>US</td>\n",
+       "      <td>0</td>\n",
+       "      <td>US</td>\n",
+       "      <td>M</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   work_year experience_level employment_type             job_title  salary  \\\n",
+       "0       2025               EN              FT  Data Quality Analyst   60000   \n",
+       "1       2025               EN              FT  Data Quality Analyst   48000   \n",
+       "2       2025               SE              FT     Applied Scientist  266000   \n",
+       "3       2025               SE              FT     Applied Scientist  204000   \n",
+       "4       2025               SE              FT        Data Scientist  291000   \n",
+       "\n",
+       "  salary_currency  salary_in_usd employee_residence  remote_ratio  \\\n",
+       "0             GBP          75949                 GB             0   \n",
+       "1             GBP          60759                 GB             0   \n",
+       "2             USD         266000                 US             0   \n",
+       "3             USD         204000                 US             0   \n",
+       "4             USD         291000                 US             0   \n",
+       "\n",
+       "  company_location company_size  \n",
+       "0               GB            M  \n",
+       "1               GB            M  \n",
+       "2               US            M  \n",
+       "3               US            M  \n",
+       "4               US            M  "
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "d9df841c-35f4-4243-bf89-410953d6fdfd",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>work_year</th>\n",
+       "      <th>experience_level</th>\n",
+       "      <th>employment_type</th>\n",
+       "      <th>job_title</th>\n",
+       "      <th>salary</th>\n",
+       "      <th>salary_currency</th>\n",
+       "      <th>salary_in_usd</th>\n",
+       "      <th>employee_residence</th>\n",
+       "      <th>remote_ratio</th>\n",
+       "      <th>company_location</th>\n",
+       "      <th>company_size</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>141561</th>\n",
+       "      <td>2020</td>\n",
+       "      <td>SE</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Data Scientist</td>\n",
+       "      <td>412000</td>\n",
+       "      <td>USD</td>\n",
+       "      <td>412000</td>\n",
+       "      <td>US</td>\n",
+       "      <td>100</td>\n",
+       "      <td>US</td>\n",
+       "      <td>L</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>141562</th>\n",
+       "      <td>2021</td>\n",
+       "      <td>MI</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Principal Data Scientist</td>\n",
+       "      <td>151000</td>\n",
+       "      <td>USD</td>\n",
+       "      <td>151000</td>\n",
+       "      <td>US</td>\n",
+       "      <td>100</td>\n",
+       "      <td>US</td>\n",
+       "      <td>L</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>141563</th>\n",
+       "      <td>2020</td>\n",
+       "      <td>EN</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Data Scientist</td>\n",
+       "      <td>105000</td>\n",
+       "      <td>USD</td>\n",
+       "      <td>105000</td>\n",
+       "      <td>US</td>\n",
+       "      <td>100</td>\n",
+       "      <td>US</td>\n",
+       "      <td>S</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>141564</th>\n",
+       "      <td>2020</td>\n",
+       "      <td>EN</td>\n",
+       "      <td>CT</td>\n",
+       "      <td>Business Data Analyst</td>\n",
+       "      <td>100000</td>\n",
+       "      <td>USD</td>\n",
+       "      <td>100000</td>\n",
+       "      <td>US</td>\n",
+       "      <td>100</td>\n",
+       "      <td>US</td>\n",
+       "      <td>L</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>141565</th>\n",
+       "      <td>2021</td>\n",
+       "      <td>SE</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Data Scientist</td>\n",
+       "      <td>7000000</td>\n",
+       "      <td>INR</td>\n",
+       "      <td>94665</td>\n",
+       "      <td>IN</td>\n",
+       "      <td>50</td>\n",
+       "      <td>IN</td>\n",
+       "      <td>L</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "        work_year experience_level employment_type                 job_title  \\\n",
+       "141561       2020               SE              FT            Data Scientist   \n",
+       "141562       2021               MI              FT  Principal Data Scientist   \n",
+       "141563       2020               EN              FT            Data Scientist   \n",
+       "141564       2020               EN              CT     Business Data Analyst   \n",
+       "141565       2021               SE              FT            Data Scientist   \n",
+       "\n",
+       "         salary salary_currency  salary_in_usd employee_residence  \\\n",
+       "141561   412000             USD         412000                 US   \n",
+       "141562   151000             USD         151000                 US   \n",
+       "141563   105000             USD         105000                 US   \n",
+       "141564   100000             USD         100000                 US   \n",
+       "141565  7000000             INR          94665                 IN   \n",
+       "\n",
+       "        remote_ratio company_location company_size  \n",
+       "141561           100               US            L  \n",
+       "141562           100               US            L  \n",
+       "141563           100               US            S  \n",
+       "141564           100               US            L  \n",
+       "141565            50               IN            L  "
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.tail()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "f54473a7-d02d-469a-9550-b4b6c1adb84c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([2025, 2024, 2023, 2022, 2020, 2021])"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.work_year.unique()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "d0d20141-570a-4926-a513-8deecb5c890d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>work_year</th>\n",
+       "      <th>experience_level</th>\n",
+       "      <th>employment_type</th>\n",
+       "      <th>job_title</th>\n",
+       "      <th>salary</th>\n",
+       "      <th>salary_currency</th>\n",
+       "      <th>salary_in_usd</th>\n",
+       "      <th>employee_residence</th>\n",
+       "      <th>remote_ratio</th>\n",
+       "      <th>company_location</th>\n",
+       "      <th>company_size</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>2025</td>\n",
+       "      <td>EN</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Data Quality Analyst</td>\n",
+       "      <td>60000</td>\n",
+       "      <td>GBP</td>\n",
+       "      <td>75949</td>\n",
+       "      <td>GB</td>\n",
+       "      <td>0</td>\n",
+       "      <td>GB</td>\n",
+       "      <td>M</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>2025</td>\n",
+       "      <td>EN</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Data Quality Analyst</td>\n",
+       "      <td>48000</td>\n",
+       "      <td>GBP</td>\n",
+       "      <td>60759</td>\n",
+       "      <td>GB</td>\n",
+       "      <td>0</td>\n",
+       "      <td>GB</td>\n",
+       "      <td>M</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>2025</td>\n",
+       "      <td>SE</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Applied Scientist</td>\n",
+       "      <td>266000</td>\n",
+       "      <td>USD</td>\n",
+       "      <td>266000</td>\n",
+       "      <td>US</td>\n",
+       "      <td>0</td>\n",
+       "      <td>US</td>\n",
+       "      <td>M</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>2025</td>\n",
+       "      <td>SE</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Applied Scientist</td>\n",
+       "      <td>204000</td>\n",
+       "      <td>USD</td>\n",
+       "      <td>204000</td>\n",
+       "      <td>US</td>\n",
+       "      <td>0</td>\n",
+       "      <td>US</td>\n",
+       "      <td>M</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>2025</td>\n",
+       "      <td>SE</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Data Scientist</td>\n",
+       "      <td>291000</td>\n",
+       "      <td>USD</td>\n",
+       "      <td>291000</td>\n",
+       "      <td>US</td>\n",
+       "      <td>0</td>\n",
+       "      <td>US</td>\n",
+       "      <td>M</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>141561</th>\n",
+       "      <td>2020</td>\n",
+       "      <td>SE</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Data Scientist</td>\n",
+       "      <td>412000</td>\n",
+       "      <td>USD</td>\n",
+       "      <td>412000</td>\n",
+       "      <td>US</td>\n",
+       "      <td>100</td>\n",
+       "      <td>US</td>\n",
+       "      <td>L</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>141562</th>\n",
+       "      <td>2021</td>\n",
+       "      <td>MI</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Principal Data Scientist</td>\n",
+       "      <td>151000</td>\n",
+       "      <td>USD</td>\n",
+       "      <td>151000</td>\n",
+       "      <td>US</td>\n",
+       "      <td>100</td>\n",
+       "      <td>US</td>\n",
+       "      <td>L</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>141563</th>\n",
+       "      <td>2020</td>\n",
+       "      <td>EN</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Data Scientist</td>\n",
+       "      <td>105000</td>\n",
+       "      <td>USD</td>\n",
+       "      <td>105000</td>\n",
+       "      <td>US</td>\n",
+       "      <td>100</td>\n",
+       "      <td>US</td>\n",
+       "      <td>S</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>141564</th>\n",
+       "      <td>2020</td>\n",
+       "      <td>EN</td>\n",
+       "      <td>CT</td>\n",
+       "      <td>Business Data Analyst</td>\n",
+       "      <td>100000</td>\n",
+       "      <td>USD</td>\n",
+       "      <td>100000</td>\n",
+       "      <td>US</td>\n",
+       "      <td>100</td>\n",
+       "      <td>US</td>\n",
+       "      <td>L</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>141565</th>\n",
+       "      <td>2021</td>\n",
+       "      <td>SE</td>\n",
+       "      <td>FT</td>\n",
+       "      <td>Data Scientist</td>\n",
+       "      <td>7000000</td>\n",
+       "      <td>INR</td>\n",
+       "      <td>94665</td>\n",
+       "      <td>IN</td>\n",
+       "      <td>50</td>\n",
+       "      <td>IN</td>\n",
+       "      <td>L</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "        work_year experience_level employment_type                 job_title  \\\n",
+       "0            2025               EN              FT      Data Quality Analyst   \n",
+       "1            2025               EN              FT      Data Quality Analyst   \n",
+       "2            2025               SE              FT         Applied Scientist   \n",
+       "3            2025               SE              FT         Applied Scientist   \n",
+       "4            2025               SE              FT            Data Scientist   \n",
+       "141561       2020               SE              FT            Data Scientist   \n",
+       "141562       2021               MI              FT  Principal Data Scientist   \n",
+       "141563       2020               EN              FT            Data Scientist   \n",
+       "141564       2020               EN              CT     Business Data Analyst   \n",
+       "141565       2021               SE              FT            Data Scientist   \n",
+       "\n",
+       "         salary salary_currency  salary_in_usd employee_residence  \\\n",
+       "0         60000             GBP          75949                 GB   \n",
+       "1         48000             GBP          60759                 GB   \n",
+       "2        266000             USD         266000                 US   \n",
+       "3        204000             USD         204000                 US   \n",
+       "4        291000             USD         291000                 US   \n",
+       "141561   412000             USD         412000                 US   \n",
+       "141562   151000             USD         151000                 US   \n",
+       "141563   105000             USD         105000                 US   \n",
+       "141564   100000             USD         100000                 US   \n",
+       "141565  7000000             INR          94665                 IN   \n",
+       "\n",
+       "        remote_ratio company_location company_size  \n",
+       "0                  0               GB            M  \n",
+       "1                  0               GB            M  \n",
+       "2                  0               US            M  \n",
+       "3                  0               US            M  \n",
+       "4                  0               US            M  \n",
+       "141561           100               US            L  \n",
+       "141562           100               US            L  \n",
+       "141563           100               US            S  \n",
+       "141564           100               US            L  \n",
+       "141565            50               IN            L  "
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pd.concat([df.head(), df.tail()])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "5d1839ac-0ad6-4c3e-a39d-2868cd4d6ed8",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<bound method NDFrame.describe of         work_year experience_level employment_type                 job_title  \\\n",
+       "0            2025               EN              FT      Data Quality Analyst   \n",
+       "1            2025               EN              FT      Data Quality Analyst   \n",
+       "2            2025               SE              FT         Applied Scientist   \n",
+       "3            2025               SE              FT         Applied Scientist   \n",
+       "4            2025               SE              FT            Data Scientist   \n",
+       "...           ...              ...             ...                       ...   \n",
+       "141561       2020               SE              FT            Data Scientist   \n",
+       "141562       2021               MI              FT  Principal Data Scientist   \n",
+       "141563       2020               EN              FT            Data Scientist   \n",
+       "141564       2020               EN              CT     Business Data Analyst   \n",
+       "141565       2021               SE              FT            Data Scientist   \n",
+       "\n",
+       "         salary salary_currency  salary_in_usd employee_residence  \\\n",
+       "0         60000             GBP          75949                 GB   \n",
+       "1         48000             GBP          60759                 GB   \n",
+       "2        266000             USD         266000                 US   \n",
+       "3        204000             USD         204000                 US   \n",
+       "4        291000             USD         291000                 US   \n",
+       "...         ...             ...            ...                ...   \n",
+       "141561   412000             USD         412000                 US   \n",
+       "141562   151000             USD         151000                 US   \n",
+       "141563   105000             USD         105000                 US   \n",
+       "141564   100000             USD         100000                 US   \n",
+       "141565  7000000             INR          94665                 IN   \n",
+       "\n",
+       "        remote_ratio company_location company_size  \n",
+       "0                  0               GB            M  \n",
+       "1                  0               GB            M  \n",
+       "2                  0               US            M  \n",
+       "3                  0               US            M  \n",
+       "4                  0               US            M  \n",
+       "...              ...              ...          ...  \n",
+       "141561           100               US            L  \n",
+       "141562           100               US            L  \n",
+       "141563           100               US            S  \n",
+       "141564           100               US            L  \n",
+       "141565            50               IN            L  \n",
+       "\n",
+       "[141566 rows x 11 columns]>"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.describe"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "6957f5e5-86cf-4784-9900-51410df86779",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "work_year              int64\n",
+       "experience_level      object\n",
+       "employment_type       object\n",
+       "job_title             object\n",
+       "salary                 int64\n",
+       "salary_currency       object\n",
+       "salary_in_usd          int64\n",
+       "employee_residence    object\n",
+       "remote_ratio           int64\n",
+       "company_location      object\n",
+       "company_size          object\n",
+       "dtype: object"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.dtypes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "b92c346e-c36b-44b7-a00a-76ff5e756638",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<bound method GroupBy.mean of <pandas.core.groupby.generic.DataFrameGroupBy object at 0x12349c1f0>>"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.groupby('salary').mean"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c3b1bb6b-4cc4-4b39-8680-11e5c27efead",
+   "metadata": {},
+   "source": [
+    "# Functions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "ce297dae-656d-4633-bca7-e5a36fd988ab",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def welcome(name, ship):\n",
+    "    print(f'Welcome {name} to the {ship} space ship program!')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "id": "69294c2e-8ecf-4b1e-be10-c2264a8e3180",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def space_suit_color(color='Blue'):\n",
+    "    print(f'Your space suit is {color}\\n')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "5b281497-62a1-4eee-b354-efacd5c1d0f4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "names = ['Abdirazak', 'Alfredo', 'Amin', 'Jimale', 'Ahmed']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "id": "5dab1976-c06b-4729-bef9-1cccfbd1fd80",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Welcome Abdirazak to the Galactic 1 space ship program!\n",
+      "Your space suit is white\n",
+      "\n",
+      "Welcome Alfredo to the Galactic 2 space ship program!\n",
+      "Your space suit is black\n",
+      "\n",
+      "Welcome Amin to the USS Voyager space ship program!\n",
+      "Your space suit is red\n",
+      "\n",
+      "Welcome Jimale to the Maximum Amazin space ship program!\n",
+      "Your space suit is blue\n",
+      "\n",
+      "Welcome Ahmed to the Apple space ship program!\n",
+      "Your space suit is green\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "for idx, name in enumerate(names):\n",
+    "    welcome(name, ship[idx])\n",
+    "    space_suit_color(color[idx])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "7d405f7b-81b3-4b36-8611-0fed4d30b9bc",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ship = ['Galactic 1', 'Galactic 2', 'USS Voyager', 'Maximum Amazin', 'Apple']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "id": "e5896878-020e-4583-9285-a3e536b6675c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "color = ['white', 'black', 'red', 'blue', 'green']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "id": "606a6fea-9ffc-40e8-9f19-bbc5e1da564e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Lambda function - anonymous function\n",
+    "y = lambda x: x*3.14"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "5456ef71-5b4f-44c5-a2fd-25401926efaa",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "9.42"
+      ]
+     },
+     "execution_count": 46,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "y(3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "id": "0961f83f-d6ac-4a6f-ad77-cd0754bed72c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "9.42"
+      ]
+     },
+     "execution_count": 44,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "3*3.14"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8f518d8c-d5fb-4a21-9c6f-7cef3746b563",
+   "metadata": {},
+   "source": [
+    "# Classes\n",
+    "Object Orienting Programming with inheritance"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 72,
+   "id": "52432942-ee23-444a-a196-5744bed11f95",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "new_person.__init__('Abdirazak', 25, 'Green')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "09e8c102-0f87-4dfd-acb3-f8a9568a5187",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 83,
+   "id": "647db40a-7e30-4239-b922-4910e1d0e0f7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Class as biolerplates/templates for objects\n",
+    "class Person():\n",
+    "    # The method that runs as soon as you run a class\n",
+    "    def __init__(self, name, age, color):\n",
+    "        # Create some attributes for a person in the class\n",
+    "        self.name = name\n",
+    "        self.age = age\n",
+    "        self.color = color\n",
+    "    \n",
+    "    def year_of_birth(self):\n",
+    "        return 2024-self.age\n",
+    "        \n",
+    "    def projected_age(self, years):\n",
+    "        return self.age+years\n",
+    "    \n",
+    "    @property\n",
+    "    def ship(self):\n",
+    "        return f'{self.name} {self.color}'\n",
+    "        "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 73,
+   "id": "b6e82e90-c39c-4ce3-abc1-f87c8655a076",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Green'"
+      ]
+     },
+     "execution_count": 73,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "new_person.color"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 81,
+   "id": "a733d6d5-b7a8-4019-ad8f-40feee71e66d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "new_person = Person('Abdirazak', 25, 'Black')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 70,
+   "id": "8a153ae3-8fc8-4851-8583-1c91613cbd0e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1999"
+      ]
+     },
+     "execution_count": 70,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "new_person.year_of_birth()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 84,
+   "id": "d28cca28-bb90-4fc8-a8d7-33a55d1b2686",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "30"
+      ]
+     },
+     "execution_count": 84,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "new_person.projected_age(5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 51,
+   "id": "66ae0f46-e1c8-40c9-b4fc-bc6205639668",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "atomic_habits = Book('Atomic Habits', 'James Clear', 450)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "id": "8ed49c6c-bd08-47c0-878a-04ecf5b47431",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "'Atomic Habits' by James Clear, 450 pages\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(atomic_habits)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "id": "919a1b01-ad35-4cbb-9565-9c6b5f689725",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 53,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "atomic_habits.is_long()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 60,
+   "id": "669d9916-f53b-4c3f-a6ac-06d95c3a89ae",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'JAMES CLEAR'"
+      ]
+     },
+     "execution_count": 60,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "atomic_habits._format_author()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "id": "948ff5c7-7f14-4ccd-8702-13adaffca168",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "\"'Atomic Habits' by James Clear, 450 pages\""
+      ]
+     },
+     "execution_count": 55,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "atomic_habits.__str__()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "id": "63db0fa3-b755-43c3-a137-af5bfa05e076",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "450"
+      ]
+     },
+     "execution_count": 56,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "atomic_habits.__len__()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "id": "a89e3423-a013-4dbb-b4d7-8346d65fc3a2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class Book:\n",
+    "    def __init__(self, title, author, pages):\n",
+    "        self.title = title\n",
+    "        self.author = author\n",
+    "        self.pages = pages\n",
+    "\n",
+    "    def describe(self):\n",
+    "        return f\"'{self.title}' by {self.author}, {self.pages} pages\"\n",
+    "\n",
+    "    def is_long(self):\n",
+    "        return self.pages > 300\n",
+    "\n",
+    "    def _format_author(self):  # Helper method\n",
+    "        return self.author.lower()\n",
+    "\n",
+    "    def __str__(self):\n",
+    "        return self.describe()\n",
+    "\n",
+    "    def __len__(self):\n",
+    "        return self.pages"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "id": "bcb899d9-abb7-4d1c-9336-664e66dc4d1c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class Temperature:\n",
+    "    def __init__(self, celsius):\n",
+    "        self._celsius = celsius\n",
+    "\n",
+    "    @property\n",
+    "    def celsius(self):\n",
+    "        return self._celsius\n",
+    "\n",
+    "    @celsius.setter\n",
+    "    def celsius(self, value):\n",
+    "        if value < -273.15:\n",
+    "            raise ValueError(\"Too cold for physics!\")\n",
+    "        self._celsius = value"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 63,
+   "id": "f838d884-539b-41b3-9699-6fb45b2df74b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "25\n"
+     ]
+    }
+   ],
+   "source": [
+    "t = Temperature(25)\n",
+    "print(t.celsius)      # 25\n",
+    "t.celsius = 300      # Raises error"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0c814892-fe65-4d36-bfdd-437c283cf6a5",
+   "metadata": {},
+   "source": [
+    "## Class Inheritance"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 129,
+   "id": "05fcfc56-b1e9-45ec-a892-62baccc1edbb",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class Astronaut(Person):\n",
+    "    def __init__(self, name, age, color, duration: int):\n",
+    "        super().__init__(name, age, color)\n",
+    "        self.duration = duration\n",
+    "\n",
+    "    def age_on_return(self):\n",
+    "        return self.projected_age(years=int(self.duration/12))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "1b60a3cd-2cb5-4fd4-9cae-785f903e3800",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 131,
+   "id": "58d0222d-3e9a-4873-bd71-1eef169e258a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "hamilton: Astronaut = Astronaut('Hamilton', 34,'red', 5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "73360416-ee68-4169-b107-35fc14b8c2d3",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 97,
+   "id": "fd6bf62f-fcf9-46dc-9dc8-e4c1465d9e3c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1990"
+      ]
+     },
+     "execution_count": 97,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "leclerc.year_of_birth()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 98,
+   "id": "f2abb6fd-bfaf-426d-868a-3aaa4a6de589",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "44"
+      ]
+     },
+     "execution_count": 98,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "leclerc.projected_age(years=10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 224,
+   "id": "23ae9e15-ec11-4af4-8c4e-056093e5f1a1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "leclerc: Astronaut = Astronaut('Leclerc', 34,'red', 4)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 132,
+   "id": "0d079a15-ec93-4612-89e3-3652540e6f3f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "34"
+      ]
+     },
+     "execution_count": 132,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "hamilton.age_on_return()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e54e0260-0d80-436b-bf63-55627347be2e",
+   "metadata": {},
+   "source": [
+    "# Modules"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 143,
+   "id": "1b2fa22a-0b71-4f24-b9d9-d88c6ae98ed2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Import launch codes helper file\n",
+    "\n",
+    "from helpers import lauch_codes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 142,
+   "id": "bdccd864-16d0-41fb-b3dd-7be3c821eee5",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "123456789"
+      ]
+     },
+     "execution_count": 142,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "lauch_codes()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0f3464ee-596f-4a40-a190-2b84954b33fb",
+   "metadata": {},
+   "source": [
+    "# Working with Packages"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 147,
+   "id": "d281f774-08cf-41ee-b485-f39d3b126cb2",
+   "metadata": {
+    "collapsed": true,
+    "jupyter": {
+     "outputs_hidden": true
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Defaulting to user installation because normal site-packages is not writeable\n",
+      "Requirement already satisfied: requests in /Users/abdirazak/Library/Python/3.9/lib/python/site-packages (2.32.3)\n",
+      "Requirement already satisfied: charset-normalizer<4,>=2 in /Users/abdirazak/Library/Python/3.9/lib/python/site-packages (from requests) (3.4.1)\n",
+      "Requirement already satisfied: idna<4,>=2.5 in /Users/abdirazak/Library/Python/3.9/lib/python/site-packages (from requests) (3.10)\n",
+      "Requirement already satisfied: urllib3<3,>=1.21.1 in /Users/abdirazak/Library/Python/3.9/lib/python/site-packages (from requests) (2.4.0)\n",
+      "Requirement already satisfied: certifi>=2017.4.17 in /Users/abdirazak/Library/Python/3.9/lib/python/site-packages (from requests) (2025.1.31)\n"
+     ]
+    }
+   ],
+   "source": [
+    "!pip install requests"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 148,
+   "id": "da9dcc41-e555-4aba-acdd-1b2234647a60",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import requests"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 150,
+   "id": "67e27fc1-a486-41bd-bd58-ddcf386997b9",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "\u001b[0;31mSignature:\u001b[0m \u001b[0mrequests\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mget\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0murl\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mparams\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;32mNone\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+       "\u001b[0;31mSource:\u001b[0m   \n",
+       "\u001b[0;32mdef\u001b[0m \u001b[0mget\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0murl\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mparams\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;32mNone\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\n",
+       "\u001b[0;34m\u001b[0m    \u001b[0;34mr\"\"\"Sends a GET request.\u001b[0m\n",
+       "\u001b[0;34m\u001b[0m\n",
+       "\u001b[0;34m    :param url: URL for the new :class:`Request` object.\u001b[0m\n",
+       "\u001b[0;34m    :param params: (optional) Dictionary, list of tuples or bytes to send\u001b[0m\n",
+       "\u001b[0;34m        in the query string for the :class:`Request`.\u001b[0m\n",
+       "\u001b[0;34m    :param \\*\\*kwargs: Optional arguments that ``request`` takes.\u001b[0m\n",
+       "\u001b[0;34m    :return: :class:`Response <Response>` object\u001b[0m\n",
+       "\u001b[0;34m    :rtype: requests.Response\u001b[0m\n",
+       "\u001b[0;34m    \"\"\"\u001b[0m\u001b[0;34m\u001b[0m\n",
+       "\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\n",
+       "\u001b[0;34m\u001b[0m    \u001b[0;32mreturn\u001b[0m \u001b[0mrequest\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"get\"\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0murl\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mparams\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mparams\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+       "\u001b[0;31mFile:\u001b[0m      ~/Library/Python/3.9/lib/python/site-packages/requests/api.py\n",
+       "\u001b[0;31mType:\u001b[0m      function"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "requests.get??"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 163,
+   "id": "81f23b1b-c2e2-4ff9-9f14-8c3180102007",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "iss_url = 'https://wheretheiss.at'\n",
+    "joke_url = 'icanhazdadjoke.com'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 166,
+   "id": "be6c0731-6317-4655-9848-5fac5f0d7d03",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_header = {'Accept':'application/json'}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 168,
+   "id": "7a352bd0-18b5-411c-9b8f-e31d6b5c6676",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# API call\n",
+    "\n",
+    "results = requests.get(iss_url, headers=my_header)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 169,
+   "id": "1d1e5661-3dc6-453e-863a-f03c662ea6f2",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'Date': 'Tue, 15 Jul 2025 15:21:29 GMT', 'Server': 'Apache/2.2.22 (Ubuntu)', 'X-Powered-By': 'PHP/5.3.10-1ubuntu3.26', 'Set-Cookie': 'pvid=3c94acffedad8d492dbdb67d99ff5c596ec53541; domain=.wheretheiss.at; expires=Wed, 18-May-2033 03:33:20 GMT; path=/; HttpOnly;', 'X-Apache-Time': 'D=22914', 'Cache-Control': 'max-age=0, no-cache', 'Vary': 'Accept-Encoding', 'Content-Encoding': 'gzip', 'Content-Length': '4112', 'Keep-Alive': 'timeout=15, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'text/html'}"
+      ]
+     },
+     "execution_count": 169,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "results.headers"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cc200597-4e8a-43d2-924f-edc16fbdde81",
+   "metadata": {},
+   "source": [
+    "# Working with Files"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 174,
+   "id": "d4ebac87-dc85-4062-9599-c998c76a5ad3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Write out our mission journal\n",
+    "with open('mission_journal.txt', 'w') as f:\n",
+    "    f.write('Its my first day on the space mission. Very interesting!')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 176,
+   "id": "f7bf546d-7a4c-4947-a135-5ed3733e0a42",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Its my first day on the space mission. Very interesting!'"
+      ]
+     },
+     "execution_count": 176,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Read from the journal file\n",
+    "with open('mission_journal.txt', 'r') as f:\n",
+    "    file = f.read()\n",
+    "\n",
+    "file"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b72c8a59-4bc4-4843-8930-f2511400aea0",
+   "metadata": {},
+   "source": [
+    "# Error Handling"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 177,
+   "id": "4678d871-9e2f-46f0-98c0-085ec42a04e3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "new_set = {1, 2, 3, 4, 5, 6}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 180,
+   "id": "c43af6c7-209d-4911-a973-657536dfd3e3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "'set' object does not support item assignment\n"
+     ]
+    }
+   ],
+   "source": [
+    "try:\n",
+    "    new_set[0] = 4\n",
+    "except Exception as e:\n",
+    "    print(e)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "12d05433-b944-474e-a5c6-34b19bc74577",
+   "metadata": {},
+   "source": [
+    "# Math in Python"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 209,
+   "id": "75ff758d-ed44-4442-bec3-8d5e4391f90b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Create two variables\n",
+    "x = 45\n",
+    "y = 4\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 210,
+   "id": "990fb59c-f2b7-4aa0-b4c8-6fb2a55af36f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1"
+      ]
+     },
+     "execution_count": 210,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x % y"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 211,
+   "id": "299d612e-5097-476c-aa98-401ce178d07c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "11"
+      ]
+     },
+     "execution_count": 211,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x // y"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 212,
+   "id": "283be4ce-0bfb-491b-9cb5-5ca7bf1d5a03",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "z = x/y"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 213,
+   "id": "ec6705b4-49ef-47db-be80-fb0a634c86d8",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "11.25"
+      ]
+     },
+     "execution_count": 213,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "round(z, 2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 215,
+   "id": "f2a4a0e5-8764-4abc-92d9-1751870d2ade",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "60"
+      ]
+     },
+     "execution_count": 215,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "abs(-60)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 216,
+   "id": "cab4e03b-863b-483d-8576-8b19fd6b7bb4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import math"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 218,
+   "id": "99cf87be-d103-4690-b282-91d8fc56e4dc",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "5.0"
+      ]
+     },
+     "execution_count": 218,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "math.sqrt(25)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "166db287-35a6-4883-9987-36b636ee3aad",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
